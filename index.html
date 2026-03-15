@@ -957,6 +957,15 @@ select.modal-select:focus{border-color:rgba(255,200,60,.45);}
 }
 .hint-icon{font-size:1.1rem;margin-right:6px;}
 
+/* 환영 힌트 전용 */
+#empty-hint .hint-card{
+  background:rgba(10,8,4,.65);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border:1px solid rgba(255,200,60,.20);
+  border-radius:20px;padding:28px 32px;margin-bottom:0;
+  text-align:center;
+}
+
 /* 입력 폼 */
 .field{margin-bottom:12px;}
 .modal .field{padding:0 20px;margin-bottom:10px;}
@@ -1354,6 +1363,112 @@ button:not(.btab):not(.fab-r-btn):not(.fab-add):not(.close-btn):not(.hp-head-clo
 .green { color:#3de88a; }
 .red { color:#ff6b6b; }
 .need { color:rgba(255,255,255,.30); }
+
+/* ═══ 정찰병 패널 ═══ */
+#scout-panel{
+  position:fixed;inset:0;z-index:300;
+  display:none;align-items:center;justify-content:center;
+  background:rgba(4,3,2,.82);
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  animation:fadeIn .2s ease;
+}
+.scout-box{
+  width:min(480px,96vw);
+  border-radius:28px;
+  background:rgba(12,9,4,.92);
+  border:1px solid rgba(140,200,255,.18);
+  box-shadow:0 32px 80px rgba(0,0,0,.70),0 1px 0 rgba(255,255,255,.06) inset;
+  animation:popIn .26s cubic-bezier(.34,1.46,.64,1);
+  overflow:hidden;display:flex;flex-direction:column;
+  max-height:90vh;
+}
+.scout-head{
+  background:linear-gradient(145deg,rgba(140,200,255,.10),transparent);
+  padding:16px 20px 12px;border-bottom:1px solid rgba(255,255,255,.07);
+  display:flex;align-items:center;justify-content:space-between;flex-shrink:0;
+}
+.scout-head-left{display:flex;align-items:center;gap:10px;}
+.scout-head-icon{font-size:1.4rem;line-height:1;}
+.scout-head-title{font-size:.95rem;font-weight:800;color:rgba(255,248,232,.93);letter-spacing:-.2px;}
+.scout-head-sub{font-size:.62rem;color:rgba(140,200,255,.55);margin-top:2px;font-weight:600;}
+.scout-head-close{
+  width:32px;height:32px;border-radius:50%;
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.10);
+  color:rgba(255,255,255,.45);font-size:.72rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;transition:all .15s;
+}
+.scout-head-close:hover{background:rgba(255,60,60,.20);border-color:rgba(255,80,80,.30);color:rgba(255,160,160,.9);}
+.scout-scroll{flex:1;overflow-y:auto;overflow-x:hidden;padding:14px 16px;min-height:0;}
+.scout-info{
+  background:rgba(140,200,255,.06);border:1px solid rgba(140,200,255,.14);
+  border-radius:12px;padding:10px 14px;margin-bottom:14px;
+  font-size:.70rem;color:rgba(200,230,255,.65);line-height:1.7;
+}
+.scout-slots{display:flex;flex-direction:column;gap:10px;margin-bottom:16px;}
+.scout-slot{
+  border-radius:16px;border:1px solid rgba(140,200,255,.14);
+  background:rgba(140,200,255,.04);overflow:hidden;
+}
+.scout-slot-head{
+  display:flex;align-items:center;gap:10px;padding:12px 14px;
+}
+.scout-slot-num{
+  width:26px;height:26px;border-radius:50%;
+  background:rgba(140,200,255,.12);border:1px solid rgba(140,200,255,.22);
+  color:rgba(140,200,255,.80);font-size:.68rem;font-weight:800;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.scout-slot-name{font-size:.82rem;font-weight:800;color:rgba(255,248,220,.88);flex:1;}
+.scout-slot-empty{font-size:.78rem;color:rgba(255,255,255,.25);flex:1;font-style:italic;}
+.scout-slot-time{font-size:.58rem;color:rgba(140,200,255,.45);font-weight:600;white-space:nowrap;}
+.scout-slot-rate{
+  font-size:.80rem;font-weight:800;white-space:nowrap;
+}
+.scout-slot-rate.up{color:#3de88a;}
+.scout-slot-rate.down{color:#ff6b6b;}
+.scout-slot-rate.zero{color:rgba(255,255,255,.35);}
+.scout-slot-detail{
+  padding:0 14px 12px;display:flex;gap:8px;align-items:center;
+}
+.scout-price-box{
+  flex:1;padding:8px 12px;border-radius:10px;
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);
+}
+.scout-price-label{font-size:.50rem;color:rgba(255,255,255,.30);font-weight:700;letter-spacing:.4px;text-transform:uppercase;margin-bottom:2px;}
+.scout-price-val{font-size:.72rem;font-weight:800;color:rgba(255,248,220,.80);}
+.scout-del-btn{
+  width:28px;height:28px;border-radius:8px;border:1px solid rgba(255,80,80,.20);
+  background:rgba(255,80,80,.08);color:rgba(255,120,120,.60);
+  font-size:.70rem;cursor:pointer;transition:all .15s;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+}
+.scout-del-btn:hover{background:rgba(255,80,80,.18);color:rgba(255,160,160,.9);}
+.scout-add-form{
+  border-radius:14px;border:1px dashed rgba(140,200,255,.20);
+  background:rgba(140,200,255,.03);padding:14px;
+}
+.scout-add-title{font-size:.65rem;color:rgba(140,200,255,.55);font-weight:700;letter-spacing:.4px;text-transform:uppercase;margin-bottom:10px;}
+.scout-form-row{display:flex;gap:8px;align-items:flex-end;}
+.scout-input{
+  flex:1;padding:9px 12px;border-radius:11px;
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);
+  color:rgba(255,248,232,.88);font-size:.78rem;font-weight:600;
+  outline:none;font-family:inherit;transition:border-color .15s;
+}
+.scout-input:focus{border-color:rgba(140,200,255,.45);background:rgba(255,255,255,.10);}
+.scout-add-btn{
+  padding:9px 16px;border-radius:11px;border:none;
+  background:linear-gradient(140deg,rgba(140,200,255,.80),rgba(80,140,220,.80));
+  color:#001830;font-size:.75rem;font-weight:800;cursor:pointer;
+  transition:all .16s;white-space:nowrap;flex-shrink:0;
+  box-shadow:0 3px 12px rgba(100,160,255,.25);
+}
+.scout-add-btn:hover{transform:translateY(-1px);box-shadow:0 5px 16px rgba(100,160,255,.35);}
+.scout-add-btn:active{transform:scale(.95);}
+.scout-full-msg{
+  text-align:center;padding:8px;font-size:.68rem;
+  color:rgba(140,200,255,.45);font-weight:600;
+}
 
 /* ═══ 궁합 패널 ═══ */
 .ch-card {
@@ -1925,6 +2040,10 @@ button:not(.btab):not(.fab-r-btn):not(.fab-add):not(.close-btn):not(.hp-head-clo
     <span class="rtab-icon">💘</span>
     <span class="rtab-label">궁합</span>
   </button>
+  <button class="rtab rtab-sm" onclick="openScoutPanel()">
+    <span class="rtab-icon">🔭</span>
+    <span class="rtab-label">정찰병</span>
+  </button>
   <button class="rtab rtab-sm" onclick="openLegendsPanel()">
     <span class="rtab-icon">👑</span>
     <span class="rtab-label">전설</span>
@@ -2004,9 +2123,9 @@ button:not(.btab):not(.fab-r-btn):not(.fab-add):not(.close-btn):not(.hp-head-clo
 <!-- Empty hint -->
 <div id="empty-hint">
   <div class="hint-card">
-    <div class="hint-icon" style="font-size:2.5rem;margin-bottom:10px;">🌱</div>
-    <p>Stocky World에 오신 걸 환영해요!<br>종목을 추가하면 귀여운<br>주민이 나타납니다</p>
-    <p style="margin-top:12px;font-size:.8rem;color:#b09870;">화면을 탭해서 시작하기</p>
+    <div class="hint-emoji">🌱</div>
+    <div class="hint-text">Stocky World에 오신 걸 환영해요!<br>종목을 추가하면 귀여운 주민이 나타납니다</div>
+    <div class="hint-sub">화면을 탭해서 시작하기 →</div>
   </div>
 </div>
 
@@ -2195,9 +2314,44 @@ button:not(.btab):not(.fab-r-btn):not(.fab-add):not(.close-btn):not(.hp-head-clo
 </div>
 
 
+<!-- Scout Panel -->
+<div id="scout-panel">
+  <div class="scout-box">
+    <div class="scout-head">
+      <div class="scout-head-left">
+        <div class="scout-head-icon">🔭</div>
+        <div>
+          <div class="scout-head-title">정찰병</div>
+          <div class="scout-head-sub">관심 종목 수익률 추적 (최대 3개)</div>
+        </div>
+      </div>
+      <button class="scout-head-close" onclick="closeScoutPanel()">✕</button>
+    </div>
+    <div class="scout-scroll">
+      <div class="scout-info">
+        👻 정찰병은 아직 내 마을에 합류하지 않은 <b style="color:rgba(200,230,255,.85)">유령 주민</b>이에요.<br>
+        등록 시점 기준으로 수익률을 추적해요. 마음에 들면 <b style="color:rgba(200,230,255,.85)">정식 초대</b>로 마을에 데려오세요!
+      </div>
+      <div class="scout-slots" id="scout-slots"></div>
+      <div class="scout-add-form" id="scout-add-form">
+        <div class="scout-add-title">🔭 새 정찰병 등록</div>
+        <div class="scout-form-row">
+          <div style="flex:1;display:flex;flex-direction:column;gap:6px;">
+            <input class="scout-input" id="sc-name" placeholder="종목명 (예: 카카오)" />
+            <input class="scout-input" id="sc-price" type="number" placeholder="등록 시점 현재가 (원)" />
+          </div>
+          <button class="scout-add-btn" onclick="addScout()">등록</button>
+        </div>
+      </div>
+      <div class="scout-full-msg" id="scout-full-msg" style="display:none">
+        👻 정찰병은 최대 3명까지만 등록할 수 있어요
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- Chemistry Panel -->
 <div id="chemistry-panel">
-  <div class="chem-box">
     <div class="ch-head">
       <div class="ch-head-left">
         <div class="ch-head-icon">💘</div>
@@ -2312,6 +2466,10 @@ const placedMeshMap = {};
 let placedItemCounter = 0;
 let coinTimerId = null;
 const charGroups = {};
+const scoutGroups = {};
+const scoutLabelEls = {};
+const SCOUT_SPOTS = [[-2.2,2.2],[0,2.8],[2.2,2.2]];
+let scouts = JSON.parse(localStorage.getItem('stocky_scouts')||'[]');
 
 // ── 캐릭터 배치 좌표 ──
 const SPOTS = [
@@ -3168,6 +3326,25 @@ function getAnimal(name){
 
 
 // ══════════════════════════════════════════════════
+//  ANIMAL DEFS — 산업별 동물 매핑
+// ══════════════════════════════════════════════════
+const ANIMAL_DEFS = {
+  '반도체': { animal:'robot',   bodyCol:0x88aaee, bellyCol:0xddeeff, earCol:0x6688dd, accentCol:0x44ddff, label:'반도체' },
+  '빅테크': { animal:'bear',    bodyCol:0x6688dd, bellyCol:0xd0e4ff, earCol:0x5577cc, accentCol:0x4466bb, label:'빅테크' },
+  'IT':     { animal:'fox',     bodyCol:0xff8844, bellyCol:0xffe4c8, earCol:0xee6622, accentCol:0xff5500, label:'IT'     },
+  '자동차': { animal:'dog',     bodyCol:0xddaa55, bellyCol:0xfff0cc, earCol:0xcc9944, accentCol:0xbb8833, label:'자동차' },
+  '전기차': { animal:'rabbit',  bodyCol:0x88ddbb, bellyCol:0xd8fff0, earCol:0x66cc99, accentCol:0x44bb88, label:'전기차' },
+  '배터리': { animal:'frog',    bodyCol:0x66cc55, bellyCol:0xd8ffd0, earCol:0x44aa33, accentCol:0x339922, label:'배터리' },
+  '금융':   { animal:'hamster', bodyCol:0xeecc77, bellyCol:0xfff4dd, earCol:0xddaa55, accentCol:0xcc9944, label:'금융'   },
+  '헬스케어':{ animal:'bunny',  bodyCol:0xffaabb, bellyCol:0xffe8ee, earCol:0xff8899, accentCol:0xff6677, label:'헬스케어'},
+  'AI·혁신':{ animal:'alien',   bodyCol:0xaa88ff, bellyCol:0xe8d8ff, earCol:0x8866ee, accentCol:0xcc44ff, label:'AI'    },
+  '바이오': { animal:'deer',    bodyCol:0x99cc77, bellyCol:0xe4ffd8, earCol:0x77aa55, accentCol:0x559933, label:'바이오' },
+  '소비재': { animal:'squirrel',bodyCol:0xdd9955, bellyCol:0xffeedd, earCol:0xcc7733, accentCol:0xbb6622, label:'소비재' },
+  '미디어': { animal:'penguin', bodyCol:0x334466, bellyCol:0xeeeeff, earCol:0x223355, accentCol:0x2255cc, label:'미디어' },
+  'default':{ animal:'cat',     bodyCol:0xddcc99, bellyCol:0xfff8e8, earCol:0xccbb88, accentCol:0xbbaa77, label:'?'      },
+};
+
+// ══════════════════════════════════════════════════
 //  INDUSTRY → 몸통 색상 & 형태 테마
 // ══════════════════════════════════════════════════
 const INDUSTRY_THEME = {
@@ -4017,6 +4194,22 @@ function animate(){
     }
   });
 
+  // 정찰병 유령 떠다니는 애니메이션
+  if(typeof scoutGroups !== 'undefined'){
+    Object.entries(scoutGroups).forEach(([id,g])=>{
+      // 위아래로 둥둥 + 천천히 회전
+      g.position.y = Math.sin(t*1.2 + parseFloat(id)*0.001) * 0.18 + 0.18;
+      g.rotation.y += 0.008;
+      // 깜빡이는 투명도
+      const flicker = 0.28 + Math.sin(t*2.5 + parseFloat(id)*0.5) * 0.10;
+      g.traverse(child=>{
+        if(child.isMesh && child.material?.transparent){
+          child.material.opacity = flicker;
+        }
+      });
+    });
+  }
+
   renderer.render(scene, camera);
   positionCharLabels();
 }
@@ -4146,6 +4339,7 @@ function updateCharLabels(){
     const wrap = document.createElement('div');
     wrap.className = 'char-label-wrap' + (selectedId===s.id?' selected':'');
     wrap.id = 'clabel-'+s.id;
+    wrap.style.display = 'none';
     wrap.onclick = ()=>selectStock(s.id);
 
     const isUp = s.pnlRate >= 0;
@@ -4178,6 +4372,32 @@ function updateCharLabels(){
     `;
     container.appendChild(wrap);
   });
+
+  // 정찰병 유령 라벨
+  if(typeof scouts !== 'undefined'){
+    scouts.forEach(s=>{
+      const g = scoutGroups[s.id];
+      if(!g) return;
+      const now = Date.now();
+      const matched = stocks.find(x=>x.name.toUpperCase()===s.name.toUpperCase());
+      const curPrice = matched ? matched.cur : s.basePrice;
+      const rate = ((curPrice - s.basePrice) / s.basePrice) * 100;
+      const rateStr = (rate>=0?'+':'')+rate.toFixed(1)+'%';
+      const rateColor = rate>0?'#3de88a':rate<0?'#ff6b6b':'rgba(255,255,255,.4)';
+
+      const wrap = document.createElement('div');
+      wrap.className = 'char-label-wrap';
+      wrap.id = 'clabel-scout-'+s.id;
+      wrap.style.opacity = '0.7';
+      wrap.style.display = 'none';
+      wrap.innerHTML = `
+        <div class="char-label-ticker" style="color:rgba(160,210,255,.75)">👻 ${s.name}</div>
+        <div class="char-label-rate" style="color:${rateColor};font-size:.55rem">${rateStr}</div>
+      `;
+      container.appendChild(wrap);
+    });
+  }
+
   // 위치 업데이트는 animate loop에서
   positionCharLabels();
 }
@@ -4189,10 +4409,8 @@ function positionCharLabels(){
   allGroups.forEach(({id,g})=>{
     const el = document.getElementById('clabel-'+id);
     if(!g || !el) return;
-    // 캐릭터 월드 위치 가져오기
     const pos = new THREE.Vector3();
     g.getWorldPosition(pos);
-    // 라벨은 캐릭터 발 바로 아래 (y = 캐릭터위치 - 약간)
     pos.y = g.position.y - 0.05;
     const proj = pos.project(camera);
     if(proj.z > 1){ el.style.display='none'; return; }
@@ -4202,6 +4420,25 @@ function positionCharLabels(){
     el.style.left = x + 'px';
     el.style.top  = y + 'px';
   });
+
+  // 정찰병 라벨 위치
+  if(typeof scouts !== 'undefined'){
+    scouts.forEach(s=>{
+      const g = scoutGroups[s.id];
+      const el = document.getElementById('clabel-scout-'+s.id);
+      if(!g || !el) return;
+      const pos = new THREE.Vector3();
+      g.getWorldPosition(pos);
+      pos.y = g.position.y - 0.05;
+      const proj = pos.project(camera);
+      if(proj.z > 1){ el.style.display='none'; return; }
+      el.style.display = '';
+      const x = ( proj.x + 1) / 2 * innerWidth;
+      const y = (-proj.y + 1) / 2 * innerHeight;
+      el.style.left = x + 'px';
+      el.style.top  = y + 'px';
+    });
+  }
 }
 function updateSummary(){
   const all = allStocks();
@@ -5197,6 +5434,171 @@ document.getElementById('chemistry-panel').addEventListener('click',function(e){
   if(e.target===this) closeChemistryPanel();
 });
 
+// ══════════════════════════════════════════════════
+//  🔭 정찰병 (SCOUT)
+// ══════════════════════════════════════════════════
+function saveScouts(){ localStorage.setItem('stocky_scouts', JSON.stringify(scouts)); }
+
+function openScoutPanel(){
+  renderScoutPanel();
+  document.getElementById('scout-panel').style.display='flex';
+}
+function closeScoutPanel(){
+  document.getElementById('scout-panel').style.display='none';
+}
+document.getElementById('scout-panel').addEventListener('click',function(e){
+  if(e.target===this) closeScoutPanel();
+});
+
+function addScout(){
+  const name  = document.getElementById('sc-name').value.trim();
+  const price = parseFloat(document.getElementById('sc-price').value);
+  if(!name){ alert('종목명을 입력해주세요'); return; }
+  if(!price||price<=0){ alert('현재가를 입력해주세요'); return; }
+  if(scouts.length>=3){ return; }
+
+  // 이미 보유 중인 종목 체크
+  const alreadyOwned = stocks.some(s=>s.name.toUpperCase()===name.toUpperCase());
+  if(alreadyOwned){ alert(`${name}은(는) 이미 마을에 있어요!\n정찰병은 아직 보유하지 않은 종목만 등록할 수 있어요.`); return; }
+
+  // 이미 정찰 중인 종목 체크
+  const alreadyScout = scouts.some(s=>s.name.toUpperCase()===name.toUpperCase());
+  if(alreadyScout){ alert(`${name}은(는) 이미 정찰 중이에요!`); return; }
+
+  scouts.push({ id: Date.now(), name, basePrice: price, addedAt: Date.now() });
+  saveScouts();
+  document.getElementById('sc-name').value='';
+  document.getElementById('sc-price').value='';
+  renderScoutPanel();
+  // 유령 캐릭터 씬에 추가
+  spawnScoutGhost(scouts[scouts.length-1]);
+}
+
+function removeScout(id){
+  scouts = scouts.filter(s=>s.id!==id);
+  saveScouts();
+  // 씬에서 제거
+  if(scoutGroups[id]){ scene.remove(scoutGroups[id]); delete scoutGroups[id]; }
+  if(scoutLabelEls[id]){ scoutLabelEls[id].remove(); delete scoutLabelEls[id]; }
+  renderScoutPanel();
+}
+
+function inviteScout(id){
+  const s = scouts.find(x=>x.id===id);
+  if(!s) return;
+  // 추가 모달 열고 이름 자동 입력
+  closeScoutPanel();
+  document.getElementById('m-name').value = s.name;
+  document.getElementById('add-modal').style.display='flex';
+  setTimeout(()=>document.getElementById('m-buy').focus(),100);
+}
+
+function formatElapsed(ms){
+  const m = Math.floor(ms/60000);
+  if(m<60) return m+'분 전';
+  const h = Math.floor(m/60);
+  if(h<24) return h+'시간 전';
+  return Math.floor(h/24)+'일 전';
+}
+
+function renderScoutPanel(){
+  const slotsEl = document.getElementById('scout-slots');
+  const formEl  = document.getElementById('scout-add-form');
+  const fullEl  = document.getElementById('scout-full-msg');
+  const now = Date.now();
+
+  if(!scouts.length){
+    slotsEl.innerHTML = `<div style="text-align:center;padding:24px 0;color:rgba(255,255,255,.20);font-size:.78rem;line-height:2">
+      👻 아직 정찰병이 없어요<br>
+      <span style="font-size:.66rem">관심 종목을 등록해보세요</span>
+    </div>`;
+  } else {
+    slotsEl.innerHTML = scouts.map((s,i)=>{
+      // 현재 stocks에서 같은 이름 종목의 현재가 가져오기
+      const matched = stocks.find(x=>x.name.toUpperCase()===s.name.toUpperCase());
+      const curPrice = matched ? matched.cur : s.basePrice;
+      const rate = ((curPrice - s.basePrice) / s.basePrice) * 100;
+      const rateCls = rate>0?'up':rate<0?'down':'zero';
+      const rateStr = (rate>=0?'+':'')+rate.toFixed(2)+'%';
+      const elapsed = formatElapsed(now - s.addedAt);
+      return `<div class="scout-slot">
+        <div class="scout-slot-head">
+          <div class="scout-slot-num">${i+1}</div>
+          <div class="scout-slot-name">👻 ${s.name}</div>
+          <div class="scout-slot-rate ${rateCls}">${rateStr}</div>
+        </div>
+        <div class="scout-slot-detail">
+          <div class="scout-price-box">
+            <div class="scout-price-label">등록가</div>
+            <div class="scout-price-val">${s.basePrice.toLocaleString()}원</div>
+          </div>
+          <div class="scout-price-box">
+            <div class="scout-price-label">현재가</div>
+            <div class="scout-price-val">${curPrice.toLocaleString()}원</div>
+          </div>
+          <div class="scout-price-box">
+            <div class="scout-price-label">경과</div>
+            <div class="scout-price-val" style="font-size:.62rem">${elapsed}</div>
+          </div>
+          <button class="scout-del-btn" onclick="removeScout(${s.id})" title="삭제">✕</button>
+        </div>
+        <div style="padding:0 14px 12px;display:flex;gap:6px;">
+          <button onclick="inviteScout(${s.id})" style="flex:1;padding:7px;border-radius:10px;border:1px solid rgba(61,232,138,.25);background:rgba(61,232,138,.08);color:#3de88a;font-size:.68rem;font-weight:700;cursor:pointer;transition:all .15s;"
+            onmouseover="this.style.background='rgba(61,232,138,.15)'" onmouseout="this.style.background='rgba(61,232,138,.08)'">
+            ✚ 마을에 초대하기
+          </button>
+        </div>
+      </div>`;
+    }).join('');
+  }
+
+  if(scouts.length>=3){
+    formEl.style.display='none';
+    fullEl.style.display='block';
+  } else {
+    formEl.style.display='block';
+    fullEl.style.display='none';
+  }
+}
+
+// ── 유령 캐릭터 씬 렌더링 ──
+function spawnScoutGhost(s){
+  const idx = scouts.findIndex(x=>x.id===s.id);
+  const [sx,sz] = SCOUT_SPOTS[idx % SCOUT_SPOTS.length];
+
+  // buildCharacter 재활용 (임시 stock 객체)
+  const fakeStock = { id: s.id, name: s.name, buy: s.basePrice, cur: s.basePrice, qty:1, pnlRate:0, pnlAmt:0, totalVal:s.basePrice };
+  const g = buildCharacter(fakeStock);
+
+  // 모든 메시 반투명 유령 효과
+  g.traverse(child=>{
+    if(child.isMesh){
+      child.material = child.material.clone();
+      child.material.transparent = true;
+      child.material.opacity = 0.38;
+      child.material.depthWrite = false;
+    }
+  });
+
+  g.position.set(sx, 0, sz);
+  g.scale.set(0.78, 0.78, 0.78);
+  g.userData.baseY = 0;
+  g.userData.isScout = true;
+  g.rotation.y = Math.random()*Math.PI*2;
+  scene.add(g);
+  scoutGroups[s.id] = g;
+
+  // 라벨
+  const wrap = document.createElement('div');
+  wrap.className = 'char-label-wrap';
+  wrap.style.opacity = '0.55';
+  wrap.innerHTML = `<div class="char-label-ticker" style="color:rgba(160,210,255,.85)">👻 ${s.name}</div>`;
+  document.getElementById('char-labels').appendChild(wrap);
+  scoutLabelEls[s.id] = wrap;
+}
+
+// 기존 scouts 씬에 복원 — initScene() 이후에 호출됨 (restoreScouts)
+
 function renderChemistryPanel(){
   const myNames  = stocks.map(s=>s.name);
   const myRowEl  = document.getElementById('ch-my-row');
@@ -5971,6 +6373,7 @@ function renderProfilePanel(){
 //  BOOT
 // ══════════════════════════════════════════════════
 initScene();
+scouts.forEach(s=>spawnScoutGhost(s)); // 정찰병 복원 (ANIMAL_DEFS 초기화 후)
 updateWeatherHUD();
 updateCelestial();
 setInterval(updateWeatherHUD, 3*60*1000); // 3분마다 (API 부하 고려)
@@ -6754,22 +7157,6 @@ function showCashInfo() {
 //  ANIMAL CHARACTER SYSTEM v3
 //  동물마다 실루엣이 완전히 다르게
 // ══════════════════════════════════════════════════
-
-const ANIMAL_DEFS = {
-  '반도체': { animal:'robot',   bodyCol:0x88aaee, bellyCol:0xddeeff, earCol:0x6688dd, accentCol:0x44ddff, label:'반도체' },
-  '빅테크': { animal:'bear',    bodyCol:0x6688dd, bellyCol:0xd0e4ff, earCol:0x5577cc, accentCol:0x4466bb, label:'빅테크' },
-  'IT':     { animal:'fox',     bodyCol:0xff8844, bellyCol:0xffe4c8, earCol:0xee6622, accentCol:0xff5500, label:'IT'     },
-  '자동차': { animal:'dog',     bodyCol:0xddaa55, bellyCol:0xfff0cc, earCol:0xcc9944, accentCol:0xbb8833, label:'자동차' },
-  '전기차': { animal:'rabbit',  bodyCol:0x88ddbb, bellyCol:0xd8fff0, earCol:0x66cc99, accentCol:0x44bb88, label:'전기차' },
-  '배터리': { animal:'frog',    bodyCol:0x66cc55, bellyCol:0xd8ffd0, earCol:0x44aa33, accentCol:0x339922, label:'배터리' },
-  '금융':   { animal:'hamster', bodyCol:0xeecc77, bellyCol:0xfff4dd, earCol:0xddaa55, accentCol:0xcc9944, label:'금융'   },
-  '헬스케어':{ animal:'bunny',  bodyCol:0xffaabb, bellyCol:0xffe8ee, earCol:0xff8899, accentCol:0xff6677, label:'헬스케어'},
-  'AI·혁신':{ animal:'alien',   bodyCol:0xaa88ff, bellyCol:0xe8d8ff, earCol:0x8866ee, accentCol:0xcc44ff, label:'AI'    },
-  '바이오': { animal:'deer',    bodyCol:0x99cc77, bellyCol:0xe4ffd8, earCol:0x77aa55, accentCol:0x559933, label:'바이오' },
-  '소비재': { animal:'squirrel',bodyCol:0xdd9955, bellyCol:0xffeedd, earCol:0xcc7733, accentCol:0xbb6622, label:'소비재' },
-  '미디어': { animal:'penguin', bodyCol:0x334466, bellyCol:0xeeeeff, earCol:0x223355, accentCol:0x2255cc, label:'미디어' },
-  'default':{ animal:'cat',     bodyCol:0xddcc99, bellyCol:0xfff8e8, earCol:0xccbb88, accentCol:0xbbaa77, label:'?'      },
-};
 
 function getAnimalTheme(name){
   const up = name.toUpperCase();
